@@ -10,6 +10,14 @@
   <link rel="stylesheet" type="text/css" href="thesis_site.css">
   <!--/css-->
 
+  <!--javascript-->
+  <script src="thesis_site.js"></script>
+  <!--/javascript-->
+
+  <!--jquery-->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <!--/jquery-->
+
   <!--bootstrap-->
   <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
@@ -20,12 +28,11 @@
     integrity="sha384-6khuMg9gaYr5AxOqhkVIODVIvm9ynTT5J4V1cfthmT+emCG6yVmEZsRHdxlotUnm"
     crossorigin="anonymous"></script>
   <!--/bootstrap-->
-  <link href="https://stackpath.bootstrapcdn.com/bootswatch/4.4.1/flatly/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-yrfSO0DBjS56u5M+SjWTyAHujrkiYVtRYh2dtB3yLQtUz3bodOeialO59u5lUCFF" crossorigin="anonymous">
+
   <title>Thesis</title>
 </head>
 
-<body>
+<body onload="myFunction()">
   <div class="container-fluid">
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <div class="col-md-2 col-3 ">
@@ -54,10 +61,12 @@
     </nav>
   </div>
 
-  <div class="container_fluid">
-    <br>
-    <hr class="style2">
-    <br>
+  <br>
+  <hr class="style2">
+  <br>
+  <div class="container_fluid" id="photo_video">
+
+    <!--
     <div class="col-4">
       <h3 style="font-size:3vw;">Case study 1</h3>
 
@@ -82,6 +91,9 @@
 
 
     </div>
+    <br>
+    <hr class="style2">
+    <br>-->
   </div>
 
 </body>
