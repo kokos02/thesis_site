@@ -1,0 +1,2522 @@
+﻿Title: Requirements and protocol of the 3D documentation of the Heritage Crafts tools
+
+
+Abstract: This thesis is mainly focused on 3D modeling. It is part of the Mingei project which works on preserving and making heritage crafts available to everyday people. It represents the process of making the 3D representation of the tools used in two heritage crafts, glassblowing and mastic production. Several methods are examined throughout the case studies conducted. The main methods are thorough 3d construction from the beginning, 3D laser scanning and photogrammetry. Other than those, other submethods are also used that are more specific (e.g for textures, nurbs path). The process of using the methods and constructing the tools is step by step explained so any person can do it at home. The results are as close as possible to the real life tools. Each method has its upsides and downsides. The goal is to find the best method for each case study. After that all these objects can be used for 3D videos, virtual reality and augmented reality projects.
+
+
+
+
+1. Introduction
+2. Related Work
+3. Overview of Approach (Rationale)
+4. Method
+5. Experiments
+6. Conclusions and Future Work
+
+
+
+
+Text and notes
+
+
+
+
+To do:
+* Transform into recipe 
+* Add images.
+* Add terminology
+* Study texture behavior
+
+
+2
+
+
+-Methodology
+- Textures with normals
+
+
+Glossary 
+
+
+Albedo
+	The overall brightness of an object. In simple words it is the image with the colors we will use but without normals and other special attributes
+	Bevel
+	The Bevel tool allows you to create chamfered or rounded corners on geometry. A bevel is an effect that smooths out edges and corners.
+	Blob
+	A blenders sculpting tool to make a point have a shape of a drop
+	Bridge faces
+	Usually on a cylinder you select the two edges faces and you delete them (bridge them)
+	Chamfer
+	In geometry, chamfering or edge-truncation is a topological operator that modifies one polyhedron into another
+	Color Gradient
+	specifies a range of position-dependent colors
+	Color Ramp node
+	The Color Ramp Node is used for mapping values to colors with the use of a gradient
+	Crop 
+	Tool to cut a part of an image you don’t need
+	Delete edges
+	Delete the selected vertices 
+	Displacement node
+	The Displacement node is used to displace the surface along the surface normal, to add more detail to the geometry
+	Dissolve edges
+	Dissolve will remove the geometry and fill in the surrounding geometry. Instead of removing the geometry, which may leave holes that you have to fill in again
+	Edit mode
+	Blenders mode to edit an item
+	Extrude 
+	A way to push out a shape
+	Face
+	side of a shape
+	Isotropy
+	The uniformity in all orientations
+	Loop cut
+	The way you can divide a shape in parts in blender
+	Mesh 
+	A mesh is a collection of vertices, edges, and faces that describe the shape of a 3D object in the blender software
+	Normal Mapping
+	It’s a technique used for faking the lighting of bumps and dents – an implementation of bump mapping. It is used to add details without using more polygons
+	Nurbs path 
+	Nurbs is a computer graphics technique for generating and representing curves and surfaces and nurbs path is a path based on nurbs
+	Object mode 
+	Blenders default mode to inspect an element
+	Path curve 
+	Adds a NURBS open 3D curve made of aligned control points, with Endpoint knots and the Curve Path setting enabled that allows you to modify the path.
+	Roughness Map
+	The Roughness input controls how rough or smooth a Material's surface is. Low roughness means wet look, high roughness means dry look.
+	Subdivide
+	Select two or more points and make more and more points at that place as you subdivide
+	Subdivision surface modifier 
+	A method to split the faces of a mesh into smaller faces, giving it a smooth appearance
+	Texture
+	The feel, appearance, or consistency of a surface or a substance
+	UV mapping
+	UV mapping is the process of projecting a 2D image texture onto a 3D object
+	UV unwrap
+	This way you unwrap the map to modify it on the ‘ground’ and not on the shape
+	Vertex
+	The highest point or each angular point of a polygon
+	Vertices
+	The plural of the word vertex
+	
+
+
+
+1. Introduction
+This thesis is part of the Mingei project that studies some crafts as cultural heritage. The goal of it is to present the 3D representation of the tools used in glass making and mastic production. It examines several methods of representing the real world in a 3D aspect. The goal is to give everyday people the chance to get in touch with those crafts tools over a tangible representation of their 3D image.
+Mingei is a project conducted by several institutes and labs throughout Europe. The aim of it is to explore the possibilities of representing and making accessible both tangible and intangible aspects of craft as cultural heritage to the public. Cultural heritage has significant impact on history and economy of the countries that are found on. It is particularly important to preserve it as it is close to extinction nowadays.
+In 3D computer graphics, 3D modeling is the process of making a 3D presentation of an object surface using specialized software. The software used here is Blender. The outcome of each blender project is a 3D model. The creator of those models is called a 3D artist.
+Glassblowing is a glass forming technique in which the glassblower inflates molten glass through a blowpipe. He reforms the glass in order to make nice looking shapes. Matic production is the process of making mastic. Mastic is something like a gum that it is produced in Chios which is a Greek island.
+In conclusion the goal of this thesis is to represent the tools used on the crafts above. 3D modeling is probably the best way to do it because it’s the most effective way for people to feel those tools.
+2. Related work
+
+
+https://professional3dservices.com/blog/3d-modeling-techniques.html
+
+
+https://www.aniwaa.com/3d-scanning-technologies-and-the-3d-scanning-process/
+
+
+http://www.diva-portal.org/smash/get/diva2:1200549/FULLTEXT01.pdf
+
+
+4.Overview of Approach (Rationale)
+This thesis is focused on 3D modeling. All the methods discussed are used widely and there's detailed analysis on each one. The main methods used are shape modeling, 3d laser scanning and photogrammetry. On those methods there are sub methods to modify each shape. All those methods are important in some cases while in some other are useless. So it’s a matter of discussion to find the best method to use and that’s why it’s important to analyze them.
+3. Methods
+
+
+
+
+3.1 Geometry reconstruction methods 
+
+
+3.1.1 Bending method
+Most of the times our tools have curvature. In this case you need to use the bending method. To do so you need to separate your shape to at least two parts using usually loop cuts or shapes original vertices. Then select the side you want to bend, point the cursor on the bending point, press shift + w and then move your mouse to the direction you want to bend.
+
+
+  
+
+Curved surface after using bend method
+3.1.2 NURBS path method:
+
+
+Nurbs path method is a really important method for our work. It takes place when you can’t design your shape using the basic shapes that Blender provides. So whenever you see a strange shape that you can’t think of any standard way of making it, nurbs path should come in handy.  To do so you add a curve path and in edit mode move the vertices so it looks like the shape you want to make. Then add another curve, usually a circle to give it thickness (it acts like the circle is spread across the path). After that you add another path and reform it to make the other path fat or slim in specific points and generally do some detailing. After that, you convert your shape to a mesh and your tool is ready.
+
+
+  
+
+Methodology to add a path
+
+
+
+
+
+
+
+
+
+
+  
+
+A path being modified
+
+
+
+
+  
+
+The path with the orange, the actual result the fat white shape, red line is X axis and green is Y axis
+
+
+3.1.3 Handle method
+
+
+Usually handles are shaped like cylinders. We need this method in almost every tool we make so we will make some steps for it. 1) So the first step is to add a cylinder. Most of the times handles are fatter on the begging and then become thinner or the opposite. 2) So we do that either by scaling down one of the edge faces or by adding loop cuts and scaling them up or down for more detailed results. Some handles have curvature. 3)(optional) So if you need to add curvature you add a loop cut at the place you want to make the curve and you bend it by the bending method.  Finally handles are usually made of wood but sometimes also from metals so you have to put texture and normals to make them look realistic. 4) To do that you follow the texture method. Sometimes shapes are weird and you need to make the handle and the rest of it as one shape. In this occasion you do the nurbs path method that you form all the shape as one part. 
+
+
+  
+
+A handle in edit mode
+
+
+
+
+  Nurbs path with orange and actual shape with white
+
+
+
+
+
+
+
+
+
+
+Apart from the handle the rest of the shape can be in variable shape and are most of the times tricky. You have to think whether there is a ready made shape from blender that you can use it as it is or deform a little bit, or you have to use a lot of shapes and stick them all together to form the desirable shape, or use nurbs path method to create the shape you want to make. 
+
+
+3.1.4 UV unwrap method:
+
+
+When you use nurbs path and then you transform it into a mesh, you need first to uv unwrap the shape to start using and modifying the texture. It makes something like a map of vertices over an albedo image which is your texture that represents the shape.You can also use it in a normal shape just to make the texture look even better.
+  
+
+Blenders Uv unwrap tool on the left and the actual shape with the toolbar on the right
+
+
+
+
+3.1.5 Shape modification with modifiers techniques method:
+
+
+We usually use some modifiers to give beautiful shape and thickness to our shapes. To do so a modifier we use is the subdivision surface. With this modifier we smooth our shape all around and we take a nice looking result.
+  
+
+Shape after using Subdivision surface modifier
+
+
+
+
+Another modifier we use is the solidify. This modifier gives thickness to our shape in a proper manner and we don’t need to do it by hand.
+
+
+
+
+  
+
+Shape after using solidify modifier
+
+
+3.1.6 Sculpting method:
+Sometimes we need to do more ‘artistic’ things to our tools, as the title suggests we want to sculpt them. Sculpting in blender gives us plenty possibilities like drawing, claying, blobbing etc. in a specific part of our mesh. To do so we go to the sculpting tab and select the mode we want to use. Then we use a brush like tool, we have available to sculpt our mesh.
+
+
+  
+
+Blenders sculpting tab with all its tools and a shape being modified
+3.1.7 SVG method
+
+
+The SVG (Scalable Vector Graphics) method is a method we don’t prefer but it’s sometimes useful so we have to examine it. When we have a shape that seems strange to us and we have no idea how to construct it using the methods below we use the svg method. To do so you take the image of the shape you want to design and you remove the background (you can use free online tools to do that). Then you convert the image to svg type because that is the type of file that blender accepts. Import the image to blender,transform it to a mesh and then extrude it.
+  
+
+An svg image that is being extruded
+
+
+
+
+Best case scenario you will get the exact shape of the tool you wanted to make. But this rarely happens, you will get the shape with sharp, not rounded edges and this is usually unacceptable. Sometimes also the image is not as it actually is but it’s full of dots that you can’t process it, in this case you should convert the image to svg again with another software and try again.
+
+
+
+
+3.2 Texture reconstruction methods
+3.2.1 Thorough texture construction
+
+
+Textures are a vital part of our work. They make our tools look realistic. So every time you should choose a texture (albedo) that seems appropriate for your shape. You also choose a good normal map to make it have the feeling of a real object. If you apply these to things usually you just need to adjust the roughness or use a roughness map along with a color ramp as shown in the picture and the metallic attribute of the object and you have a realistic result. You can add even more attributes but these are the most important. You can try all these things on the shader editor of Blender.
+  
+
+Shader editor with a lot of nodes including normal map, and color ramp on the left and the actual shape on the right
+
+
+3.2.2 Normal through displacement node
+An alternative way to make your tool look realistic that is easier and you don’t need to have separate albeido, normal and roughness maps is by using a displacement node. In this scenario you use your albedo map and a displacement node as shown in the picture below. So you only have to adjust the scale attribute of the displacement and you will make a mesh with realistic feeling.
+
+
+
+
+  
+
+Shader editor with a lot of nodes including displacement on the left and the actual shape on the right
+
+
+3.2.3 Ready made textures
+It also happens sometimes the texture to have built in normals so you don’t need to do anything. You just have to import the texture image to blender.
+
+
+3.2.4 Texture paint
+Sometimes we need to add color to specific points of our tool or even to make the color darker or lighter. On those occasions we use texture paint mode of blender in which we have a brush and we adjust the radius and the strength of it.
+
+
+  
+
+Texture paint tab on the left and the actual shape being painted on the right
+
+
+3.2.5 Original texture from photo
+Sometimes we can load the image from our prototype and use it’s actual texture on our tool. This can happen if our image is clean, high quality and the tool is laid down on the picture. This way we can achieve really realistic textures.
+
+
+
+
+3.2.6 Isotropic texturing
+Sometimes when we apply our textures we have some inequalities and thus differences between each part of our shapes. This usually happens when the parts have variable sizes. In this occasion we have to modify the uv map of every part according to its size. This is is isotropy.
+
+
+3.2.7 Seamless textures
+Sometimes isotropic texturing doesn’t work out. There are still inequalities and the shape looks weird. In this occasion we use seamless textures that are texture that are the same across all the image so we don’t need to scale every part accordingly to have the perfect result.
+
+
+
+
+3.3 3D scanned and photogrammetry methods
+
+
+3.3.1 Ground removing
+All the 3D (Three dimensional) shapes that are being scanned except for the actual shape we want, scan the ground that we don’t need.
+  
+
+The result after 3D printing
+
+
+
+
+So we have to remove it in order to modify the 3D shape later. To do so we turn into edit mode and using the select circle tool we select carefully all the vertices around the shape and then we delete the vertices.
+  
+
+Select circle tool
+
+
+  
+
+Marking the ground vertices to remove them
+
+
+
+
+
+
+3.3.2 part adding
+After removing the ground we end up with a shape that has no bottom, because it wasn’t scanned there. So we need somehow to fill this gap. One way of doing that is by adding a shape (e.g. cube) and fitting it in the hole that is formed.
+
+
+3.3.3 Duplication
+If part adding doesn’t work we can use duplication method. In this case you copy, paste and rotate the shape to fit under the actual shape so it acts as the bottom of the shape. Sometimes we have to scale or generally modify the new part to fit to our shape. This method is not always applicable because top is not always the same as the bottom.
+  
+
+Replica of the upper part rotated to use it as ground
+
+
+
+
+
+
+3.3.4 Connected parts sculpting
+
+
+When we connect parts especially when we use the duplication method the result is not so smooth. To fix this we need to use the blenders sculpting tool. This way we smooth the vertices that we connected so they don’t look like two separate parts.
+
+
+  Sculpting the badly connected part of the shape
+3.4 Photogrammetry method
+
+
+Photogrammetry is the science of making measurements from photographs. You put photographs and the output is a 3D model of some real world object. The Software we will use for that is Meshroom in which we give the photos as input and then it does the work in it’s own.
+
+
+Experiments and case studies
+Case study 1 : Kentitiri old
+  
+
+3 types of kentitiri with measurement
+
+
+Methods used:
+* SVG method
+* Handle method
+* Ready made textures
+* Normal through displacement node
+ 
+
+
+
+
+Detailed steps:
+
+
+1. Crop the above image to leave just the first kentitiri you want to design.
+2. Remove the background with a free online tool.
+3. Convert the image from png to svg because Blender accepts svg format to be edited after importing.
+4. Open blender and import the svg file.
+5. Extrude the the shape you imported as much as you want and then transform it to a mesh.
+6. Cut the front part of it because it’s the only part we need (to do so mark only the first part in edit mode, press p and then choose selection to separate it from the other part, then just delete the other part.)
+  
+
+The way to seperate parts of a shape
+
+
+7. Scale it in order to match your measurements, and then add a subdivision surface modifier to make it look smoother.
+8. Now for the handle. Add a cylinder mesh.
+9. Add 3 loop cuts and make it progressively thinner by scaling those parts so it looks like an actual handle.
+10. Select the two top faces and bevel them a little bit so it doesn't have so steep edges.  
+The procedure of beveling one edge
+
+
+   11. Now for the texture. Select the front part in object mode, go to the material tab on the right side of the window and press ‘new’, on the base color press the circle and select image texture, then press open and select a metal texture (you can download for free).Modify the metallic and roughness sliders to make the color vivid.
+   12. For the handle select the handle in object mode and follow the above instruction with a wood texture this time.
+   13. In the end merge the two objects by grabbing them (g button) and the kentitiri is ready.
+   14. Add metal and wood texture
+
+
+          
+Final Kentitiri
+
+
+Case study 2 : Kentitiri New
+
+
+
+
+  
+
+Original Kentitiri
+
+
+Methods Used:
+   * Nurbs path method
+   * Handle method
+   * Uv unwrap method
+   * Normal through displacement node
+Detailed steps: 
+
+
+   1. Add a cylinder for the handle.
+   2. Make 6 loop cuts by pressing ctrl+r and then scrolling the mouse wheel in order to form the black cuts of the handle. Bring them close in 2 pair groups.
+   3. Separate the cuts from the handle by selecting them and pressing p and selection. Scale them down so it looks deep and give them a black color.
+   4. Add a path that is actually a nurbs path and curve it in a way that it looks like the front part of the kentitiri.   
+Configuring a nurbs path in edit mode
+
+
+      5. Add a circle, and then use it as a bevel from the bevel section of the path to make it fat and round.
+      6. Add another path and use it as a taper on the geometry tab of the path. This way we can reform the path so it looks exactly like the kentitiri, you just need to modify the new path you added.
+      7. Convert your shape to a mesh and then uv unwrap it
+  
+
+The result of a nurbs path
+
+
+      8. Merge the two shapes by pressing g button and then grabbing them.
+      9. For the texture use again a wood and metal texture respectively and modify metallic and roughness to achieve vivid colors.
+
+
+
+
+
+
+  Final Kentitiri
+
+
+
+
+Case study 3 : Kentitiri old 2
+
+
+  
+
+Original Kentitiri
+
+
+Methods used:
+      * Handle method
+      * Shape modification with modifiers techniques method
+      * Normal through displacement node
+      * Bending method
+
+
+Detailed steps:
+      1. For the handle you just add a plain cylinder and make some loop cuts to scale each part so it looks like the original one
+      2. For the front part you add a surface mesh and you reform, bend it in a way that it looks like the original.
+      3. You add a subdivision surface modifier to make it look smoother and you extrude the part adjacent to the handle to make it like the original.
+      4. You stick together those two parts, add a rusty metal texture for both of them and you are ready
+  
+
+Final Kentiri
+
+
+
+
+
+
+
+
+Case study 4 : Baltadaki
+  
+
+Original Baltadaki
+
+
+
+
+Methods used:
+      * Handle method
+      * Bending method
+      * Thorough texture construction
+      * Original texture from photo
+      * Sculpting method
+
+
+Detailed steps:
+
+
+      1. First you add a cylinder
+      2. You bend a part of it around 20% of the whole cylinder so it looks like the image
+      3. Then you add a plain surface and resize it so it seems like the original
+      4. You stick together those two parts
+      5. You sculpt with the inflate tool the part that the two parts are connected so it looks like a metal glue that sticks them together 
+  
+
+Blenders sculpting tab with all its tools and a shape being modified
+
+
+      6. Finally you put a bit rusty metal texture and the mesh is ready
+  
+
+Final Baltadaki
+Case study 5 : Korakomiti
+  
+
+Original Korakomiti with measurements 
+
+
+Methods used:
+      * Handle method
+      * Bending method
+      * Normal through displacement node
+      * SVG method
+
+
+Detailed steps:
+
+
+      1. First you add a cylinder for the handle
+      2. Then add another cylinder just a bit fatter than the previous to fit over it
+      3. Scale down on the Z axis the ending of the cylinder
+      4. Add a surface scale it down on the X axis
+      5. Extrude it to give thickness to it
+      6. Modify the to edges vertices to make the actual shape
+  
+
+One side modification
+  
+
+Other side modification
+
+
+      7. Bend half of it
+      8. Stick it to the handle
+      9. Add texture
+
+
+
+
+  
+
+Final Korakomiti
+
+
+
+
+
+
+
+
+Case study 6 : Timitiri
+
+
+  
+
+Original Timitiri
+
+
+Methods used:
+      * Handle method
+      * Normal through displacement node
+
+
+Detailed steps:
+
+
+      1. Add a cylinder
+      2. Bevel one edge till it’s almost like a nail
+      3. Scale the x axis to make it look long enough
+      4. Scale the z axis of half of the cylinder using one loop cut
+      5. Scale down the x axis of the loop cut to make the desirable shape
+      6. If needed scale the other end of the cylinder
+      7. And delete the face on the other end
+      8. Add another cylinder as a handle
+      9. Make it in your desirable size and put it in the other cylinder you modified
+      10. On the head(not the handle) shape extrude the edge connected to the handle and scale it down so you have no gap between the two shapes
+      11. Give a metal texture to the head and a wooden one to the body and you are ready
+ 
+
+
+
+
+
+
+
+
+
+
+  
+
+Final Timitiri
+
+
+
+
+
+
+
+
+Case study 7 : Timitiri 2
+  
+
+Original Timitiri
+
+
+Methods used:
+      * Nurbs path method
+      * Handle method (using nurbs path)
+      * Normal through displacement node
+
+
+Detailed steps:
+      1. Add a path from the curves
+      2. Add a cycle from curves and use it as a bevel for the path above
+      3. Add another path from the curves and use it as a taper for the first path
+      4. Reform the shape through the second path
+  
+
+Nurbs path(orange) with actual result, red = X axis, green = Y axis 
+
+
+      5. Convert it to a mesh
+      6. Scale the z axis of the front hole so the shape looks like the original
+  
+
+Scaling the Z axis in edit node blue = Z axis, red = X axis
+      7. Make some small reforms as you need
+      8. Separate the handle from the front path
+      9. Scale down the ending of the handle so the hole wipes out
+  
+
+Scaling down the edge
+      10. Add metal texture for the front part and wood for the handle
+  
+
+Final Timitiri
+
+
+
+
+
+
+
+
+Case study 8 : Timitiri 3
+
+
+  
+
+Original Timitiri
+
+
+Methods used:
+      * Nurbs path method
+      * Handle method (using nurbs path)
+      * Normal through displacement node
+      * Original texture from photo
+
+
+
+
+
+
+
+
+Detailed steps:
+
+
+      1. Do the steps for the above kentitiri 2
+      2. Then just cut the (neck) part of the tool between the handle and the front part
+  
+
+The procedure to dissolve vertices
+
+
+      3. After that extrude the ending of the front part and scale it down to fit to the end of the handle
+OR
+      1. Do the steps for the above kentitiri 2
+      2. When you modify the nurbs path make it shorter
+  
+
+Final Timitiri
+
+
+
+
+
+
+
+
+
+
+
+
+Case study 9 : Timitiri 4
+  
+
+Original Timitiri
+
+
+Methods used:
+      * Hole method 
+      * Handle method 
+      * Normal through displacement node
+
+
+Detailed steps:
+
+
+      1. Add a cylinder
+      2. Scale it down a little bit below the top to form its natural shape
+      3. Add another cylinder as thick as thick you want to make the hole on the handle
+      4. Put it on the place you want to make the hole, add a boolean modifier on the first cylinder and use apply it with the other cylinder as object
+  
+
+Using cylinder to make a hole on a shape using boolean modifier
+
+
+      5. Add another cylinder with 6 vertices and place it on the handle as in the original picture
+      6. Add another cylinder with almost no depth
+      7. Cut an arc of the cycle on the bottom of the cylinder by excluding those vertices
+  
+
+Dissolving specific vertices
+
+
+      8. Scale down the front vertices of the cylinder to make it look sharp
+  
+
+Scaling down front side vertices, green line = Y axis
+
+
+      9. Grab it and put it through the second cylinder
+      10. Add texture
+
+
+  
+
+Final Timitiri
+
+
+
+
+Case study 10 : Timitiri 5
+  
+
+Original Timitiri
+
+
+Methods used:
+      * Handle method 
+      * Normal through displacement node
+      * Isotropic texturing
+
+
+Detailed steps:
+
+
+      1. Add a cylinder
+      2. Bevel one of the two edge faces
+      3. Add some loop cuts in places the thickness changes and scale accordingly
+      4. Add four loop cuts in pairs of two close to the end of the handle and make two more shapes in between the pairs by separating them
+      5. Scale down those shapes to form the cuts we see on the original image
+      6. Add another small cylinder and stick it in front of the other cylinder
+      7. Add another cylinder, scale it down on the Z axis and stick it to the previous cylinder
+      8. Add a cube
+      9. Scale it on the Y axis
+      10. Grab a pair of two vertices from one side and move them back
+      11. Do it on the other side but on the opposite side this time to form the shape of the front part
+  
+
+Grabbing the vertices, red line = X axis
+
+
+      12. Stick it to the previous cylinder
+      13. Add textures
+
+
+  
+
+Final Timitiri
+Case study 11 : Timitiri 6
+  
+
+Original Timitiri
+
+
+Methods used:
+      * Handle method 
+      * Normal through displacement node
+      * Sculpting method
+      * Shape modification with modifiers techniques method
+      * Seamless textures
+
+
+Detailed steps:
+      1. Add a cube 
+      2. Scale it accordingly to look like the handle on the picture
+      3. Add a surface
+      4. Grab the two top vertices to match the handle
+      5. Subdivide these vertices
+      6. Blop that part in sculpting mode to make the glue like shape there
+  
+
+Final Result
+
+
+
+
+
+
+
+
+Case study 12 : Timitiri 7
+  
+
+Original Timitiri
+
+
+Methods used:
+      * Handle method 
+      * Normal through displacement node
+      * Hole method
+
+
+Detailed steps:
+      1. Add a cylinder
+      2. Scale it accordingly for a handle and make a hole close to the end
+      3. Add another cylinder
+      4. Delete one face
+      5. Make a small hole on the other side
+      6. Stick it to the other cylinder
+      7. Add another thin cylinder and stick it to the shape you've made 
+      8. Add a cylinder with 3 edges
+      9. Bevel those 3 edges to make it sharp
+      10. Put it in front of the previous cylinder
+      11. Add a small cylinder in front that holds the triangle
+  
+
+Final Timitiri
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Case study 13 : Pickaxe
+  
+
+Original Picaxe
+
+
+Methods used:
+      * Handle method
+      * Bending method
+      * Shape modification with modifiers techniques method
+      * Thorough texture construction
+
+
+Detailed steps:
+      1. Add a cylinder
+      2. In edit mode select the two faces of the cylinder and bridge them so we have two holes
+  
+
+Procedure to Bridge faces
+
+
+      3. Extrude 5 vertices from each side of the cylinder
+  
+
+The upper part
+
+
+      4. Grab two edges of one of the wings you made before and make the edge look like a nail
+      5. Bend the wings
+      6. Add a subdivision surface modifier
+      7. Add a solidify modifier
+      8. Add a new cylinder
+      9. Align it and scale it so it fits in the hole you made before
+      10. Bevel the bottom face of the cylinder so it looks smoother
+      11. Add a wood texture for the handle and a dark metal for the upper part of the pickaxe
+
+
+
+
+  
+
+Final Picaxe
+Case study 14 : Axe
+  
+
+Original Axe
+
+
+Methods used:
+      * Handle method
+      * Bending method
+      * Thorough texture construction
+
+
+Detailed steps:
+      1. Add a cylinder
+      2. In edit mode select the two faces of the cylinder and bridge them so we have two holes
+      3. Extrude 5 vertices from each side of the cylinder
+      4. Extrude one side to full length and the other to half and bend the side with the half length
+      5. Grab the last vertices of the half length side and almost stick them to the top
+      6. Bend this side
+  
+
+Upper part in edit mode
+
+
+      7. Add another cylinder
+      8. Give shape and height matching the hole of the axe
+      9. Pass the handle through the hole as the original
+      10. Add wood and metal texture
+  
+
+Final Axe
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Case study 15 : Rake
+  
+
+Original Rake
+
+
+Methods used:
+      * Handle method
+      * Shape modification with modifiers techniques method
+      * Normal through displacement node
+
+
+Detailed steps:
+      1. Add a cylinder 
+      2. Scale down the bottom phase and delete the other
+      3. Add a surface and reshape it, so it looks like the surface that connects the handle with the noses
+      4. Use a subdivision surface modifier so it looks smoother and a solidify modifier so it gets fatter
+      5. Add another cylinder and use a subdivision surface modifier
+      6. Move the loop cut close to the move end to the end so the surface is even
+      7. Duplicate it two times and put them on the surface
+  
+
+Front parts
+
+
+      8. Add all these pieces together
+  
+
+Front parts assembled
+
+
+      9. Add another cylinder for the handle
+      10. Scale down the bottom phase and put it in the hole
+      11. Add wood and metal texture and you are ready
+  
+
+Final Rake
+
+
+
+
+
+
+Case study 16 : Rake 2
+
+
+  
+
+Original Rake
+
+
+Methods used:
+      * Handle method
+      * Bending method
+      * Shape modification with modifiers techniques method
+      * Normal through displacement node
+
+
+Detailed steps:
+
+
+      1. Add a cylinder
+      2. Delete 1 edge face
+      3. Scale down the other face
+      4. Add a loop cut and bend both faces
+      5. Add another loop cut close to the end and bend that part even more
+  
+
+Handle of rake
+
+
+      6. Add a surface
+      7. Scale it accordingly
+      8. Add subdivision surface and a solidify modifier
+      9. Add a cone
+      10. Scale it down and add a subdivision surface modifier
+      11. Duplicate it two times 
+      12. Stick together all these parts
+  
+
+Front part of Rake
+
+
+      13. Add a cylinder rotate it and add it in the hole
+      14. Add wood and black metal texture
+
+
+
+
+
+
+  
+
+Final Rake
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Case study 17 : Tsatali
+  
+
+Original Tsatali
+
+
+Methods used:
+      * Handle method
+      * Shape modification with modifiers techniques method
+      * Normal through displacement node
+
+
+Detailed steps:
+      1. Add a cylinder
+      2. Delete 1 edge face
+      3. Scale down the other face
+      4. Add a surface
+      5. Scale it accordingly
+      6. Add subdivision surface and a solidify modifier
+      7. Add another surface
+      8. Scale it accordingly
+      9. Add a solidify modifier and a subdivision surface modifier
+  
+
+Front parts
+      10. Stick all these parts together
+      11. Add a cylinder and put it in the hole so it becomes the handle
+      12. Add wood and black metal texture
+
+
+  
+
+Final Tsatali
+
+
+
+
+
+
+Case study 18 : Shovel
+  
+
+Original shovel
+
+
+Methods used:
+      * Handle method
+      * Shape modification with modifiers techniques method
+      * Normal through displacement node
+
+
+Detailed steps:
+
+
+      1. Add a cylinder
+      2. Delete 1 edge face
+      3. Scale down the other face
+      4. Add a surface
+      5. Scale it accordingly
+      6. Add a solidify modifier
+      7. Add another surface
+      8. Scale it accordingly
+      9. Add a solidify modifier and a subdivision surface modifier
+      10. Stick all these parts together
+  
+
+Front parts
+      11. Add a cylinder and put it in the hole so it becomes the handle
+      12. Add wood and black metal texture
+  
+
+Final Shovel
+
+
+
+
+
+
+
+
+
+
+
+
+Case study 19 : Saw
+  
+
+Original Saw
+
+
+Methods used:
+      * Handle method
+      * Bending method
+      * Normal through displacement node
+
+
+Detailed steps:
+
+
+      1. Add a surface
+      2. Scale it down on the X axis
+      3. Add a loop cut in the middle
+      4. Bend both sides
+      5. Grab the first point and almost stick it to the one under it
+  
+
+Blade shaping
+
+
+      6. Move a little bit down the other points of the upper part
+      7. Subdivide many times the points on the under part of the surface
+      8. Grab half of them (selecting one and leaving the next one unselected)  and move them up so you make it look like a saw
+  
+
+Making the small blades
+
+
+      9. Extrude it
+      10. Add a cylinder
+      11. Scale it down on the Z axis 
+      12. Add a loop cut in the middle
+      13. Bend half of it
+      14. Extrude it 
+      15. Stick together these part
+      16. Add wood and metal texture
+  
+
+Final Saw
+
+
+Case study 20 : Amia
+  
+
+Original Amia
+
+
+Methods used:
+      * Handle method
+      * Shape modification with modifiers techniques method
+      * Thorough texture construction
+
+
+Detailed steps:
+      1. Add cylinder
+      2. Select the two edge faces and bridge faces to have two holes for the handle to pass through
+      3. Select 4 vertices from the upper part and bevel them down to form the cut
+      4. Delete every face inside there
+  
+
+Base of upper part
+
+
+      5. Add a surface
+      6. Stick together the two top vertices
+      7. Add a loop cut at around ¾ of the shape and bond the rest ¼ part
+  
+
+Nose of upper part
+
+
+      8. Add a  solidify and a subdivision surface modifier
+      9. Stick these parts together
+      10. Add another cylinder
+      11. Bevel one edge a little bit to look smoother
+      12. Pass it through the hole
+      13. Add wood and metal texture
+  
+
+Final Amia
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Case study 21 : Pruning hook open
+
+
+
+
+  
+
+Original praning hook
+
+
+Methods used:
+      * Handle method(using nurbs path)
+      * Nurbs path method
+      * Normal through displacement node
+
+
+Detailed steps:
+
+
+      1. Add a path curve
+      2. Add a second path curve
+      3. Add circle curve
+      4. Modify the first path curve so it looks like the handle
+      5. Add the circle as a bevel to the first path
+  
+
+Edit mode nurbs path with white and orange, thickness measure with circle, Shape modifier the line, red line = X axis, green line = Y axis
+
+
+      6. Add the second path as a tapper to the first path
+      7. Modify the second path to give shape and fatness to the initial path
+  
+
+Nurbs path with the resulting shape
+
+
+      8. Convert the path you made to a mesh
+      9. Add a cylinder
+      10. Delete one of the edge faces
+      11. Delete some adjacent faces from both sides left
+      12. Add a surface
+      13. Extrude it to have some fatness
+      14. Grab one side to make it sharp
+      15. Subdive one side many times and grab half of the vertices to make it like it has teeth (like saw above)
+      16. Stick together those parts
+  
+
+All the parts
+      17. Add wood and metal texture
+    
+Final Pruning hook
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Case study 22 : Pruning hook Close
+  
+
+Original Pruning hook
+
+
+Methods used:
+      * Handle method(using nurbs path)
+      * Nurbs path method
+      * Normal through displacement node
+
+
+Detailed steps:
+      1. Same as above but rotate the blade to close the pruning hook
+
+
+
+
+
+
+  
+
+Final pruning hook
+
+
+
+
+
+
+
+
+Case study 23 : Sieve
+  
+
+Original sieve with measurement
+
+
+Methods used:
+      * Shape modification with modifiers techniques method
+      * Thorough texture construction
+
+
+Detailed steps:
+      1. First you add a really small circle
+      2. Then you copy, paste and scale it up until you have a diameter of 40 cm in total of all the circle to make the base
+  
+
+Sieve bottom
+      3. Then add a really thin cylinder that has the height of the diameter of your circle
+      4. Copy, paste and rotate several times and put it under the circles
+  
+
+Sieve bottom radiuses 
+
+
+      5. Make all the circles one mesh and all the cylinders another mesh by selecting them and pressing ctrl + j
+      6. Add another cylinder with a radius that covers the biggest circle you have
+      7. Delete both edge faces
+      8. Add a solidify modifier to all these meshes and stick them together
+      9. Add a wood texture and a normal map for the cylinder around the mesh and a rusty metal with normal map again for the rest of the parts
+  
+
+Final sieve
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Case study 24 : Sieve 2
+  
+
+Original sieve with measurement
+
+
+Methods used:
+      * Shape modification with modifiers techniques method
+      * Thorough texture construction
+
+
+Detailed steps:
+      1. First add a circle of around 65 cm to guide you
+      2. Inside there add really small cylinders that edge faces are deleted and copy and paste till you fill the whole circle
+  
+
+Sieve bottom making
+
+
+      3. Make them one mesh by selecting them and pressing ctrl + j
+      4. Add a solidify modifier and extrude it just a little
+      5. Add a cylinder without edge faces to wrap the cycle
+      6. Add a solidify modifier
+      7. Add textures and normals
+  
+
+Final sieve
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Case study 25 : Dramoni
+  
+
+Original Dramoni with measurement
+
+
+Methods used:
+      * Hole method
+      * Thorough texture construction
+      * Shape modification with modifiers techniques method
+
+
+Detailed steps:
+
+
+      1. Add a cylinder of around 50cm
+      2. Add a cycle to surround the cylinder
+      3. Add a small cylinder and put in the other cylinder
+      4. Hide the big cylinder by pressing H key
+      5. Copy and paste the small cylinder until you fill the hole big cylinder with small gaps between them
+  
+
+Dramoni bottom making
+
+
+      6. Select all the small cylinders and make them one mesh by pressing ctrl+j 
+      7. Unhide the big cylinder
+      8. Add a boolean modifier to the big cylinder and add all the small cylinders as object
+      9. Now delete the small cylinders
+      10. Add another cylinder
+      11. Add a solidify modifier
+      12. Put it over the surface with the holes you just made
+      13. Add texture
+  
+
+Final dramoni
+
+
+
+
+
+
+
+
+
+
+=======================================================================
+Glass
+=======================================================================
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Case study 26 : Battledore
+
+
+  
+
+Original Battledore
+
+
+Methods used:
+      * Handle method
+      * Thorough texture construction
+
+
+Detailed steps:
+
+
+      1. First add a cube
+      2. Reform it to look like the surface of the battledore
+      3. Subdivide and grab it a little bit inside to shrink it to look like the actual shape
+  
+
+Grabbing the middle edges of the surface
+
+
+      4. Then add another cube
+      5. Reform it to look like the handle of the battledore
+      6. Stick them together
+      7. Add black metal texture
+
+
+  
+
+Final Battledore
+
+
+
+
+
+
+Case study 27 : Blowpipe
+  
+
+Original blowpipe
+
+
+Methods used:
+      * Thorough texture construction
+
+
+Detailed steps:
+
+
+      1. Add a cylinder for the front part of the blowpipe
+      2. Scale it accordingly and scale up the front part
+      3. Extrude the front part just a bit and then scale it down in order to make the hole smaller
+  
+
+Front part
+
+
+      4. Then add another cylinder
+      5. Bevel the front and the back face and add a loop cut to each side
+  
+
+Back part
+
+
+      6. Add one last small cylinder for the blowing pipe
+      7. Bevel the front face that you blow from there
+      8. Stick all these parts together  
+      9. Add glowing with little rust texture to the front and the back cylinder, darker metal for the front and back of the handle and wooden for the rest of the handle
+
+
+
+
+  
+
+Final Blowpipe
+
+
+
+
+
+
+Case study 28 : Blowpipe 2
+  
+
+Original Blowpipe
+
+
+Methods used:
+      * Texture method
+      * Texture paint method
+
+
+Detailed steps:
+
+
+      1. Add a long cylinder
+      2. Bevel one edge to make the blowing part
+      3. Dissolve the remaining edge to make a hole
+      4. Add two loop cuts close to the pipe to make the orange part as on the original photo
+      5. Scale up the other edge of the cylinder and dissolve that edge to make another hole
+      6. Add metal, wood for the orange and black texture for the ending
+      7. Use texture paint to paint the front part so it looks like it is burnt from the fire
+  
+
+Final Blowpipe
+
+
+
+
+Case study 29 : Pipe
+  
+
+Original pipe
+
+
+
+
+Methods used:
+      * Shape modification with modifiers techniques method
+      * Texture method
+      * Normal through displacement node
+
+
+Detailed steps:
+      1. Add a cylinder
+      2. Bridge edge faces
+      3. Add a solidify modifier
+      4. Add texture and use texture paint
+  
+
+Final Pipe
+Case study 30 : Gathering iron
+  
+
+	Original gathering iron
+
+
+Methods used:
+      * Normal through displacement node
+      * Texture paint method
+
+
+Detailed steps
+      1. Add a cylinder
+      2. Bevel one end a little bit
+      3. Seperate a small part in front 
+      4. Use black texture for the front part and metal for the rest
+      5. Texture paint a part behind the front part to make it look like it is burnt from fire 
+
+
+
+
+
+
+
+
+  
+
+Final gathering iron
+
+
+Case study 31 : Pincers
+  
+
+Original Pincers
+
+
+Methods used:
+      * Normal through displacement node
+      * Bending method
+      * Shape modification with modifiers techniques method
+
+
+Detailed steps
+      1. Add a surface
+      2. Subdive once the two big sides
+      3. Grab the for edge vertices near to the X axis
+  
+
+Shape forming
+
+
+      4. Put two loop cuts in the middle and bend both sides of the surface
+      5. Add a subdivision and a solidify modifier
+  
+
+Upper part
+
+
+      6. Add a cube and prolong it
+      7. Stick it to the surface
+      8. Scale it from the middle and down to make a square like shape in the end
+      9. Copy and paste the cube and stick it to the other side
+      10. Add texture
+  
+
+Final Pincers
+
+
+
+
+Case study 32 : Clapper
+  
+
+Original Clapper
+
+
+Methods used:
+      * Normal through displacement node
+      * Shape modification with modifiers techniques method
+      * Hole method
+
+
+Detailed steps
+      1. Add a plane
+      2. Prolong it by scaling it
+      3. Copy and paste it
+      4. Rotate both of them and stick them together
+      5. Add a cylinder
+      6. Pass it through one of the planes
+      7. Use a boolean modifier for the plane that has the circle and add the circle as object to make a hole
+      8. Add texture
+  
+
+Final Clapper
+
+
+
+
+Case study 33 : Jacks
+  
+
+Original Jacks
+
+
+Methods used:
+      * Normal through displacement node
+      * Bending method
+      * Shape modification with modifiers techniques method
+
+
+Detailed steps
+      1. You do exactly the same steps as the pincers
+      2. But you scale down half of the two cubes so they become really thin
+
+
+   
+Final Jacks
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Case study 34 : Pallet
+  
+
+Original Pallet (Below the Pincers)
+	Methods used:
+      * Handle method
+      * Normal through displacement node
+      * Shape modification with modifiers techniques method
+
+
+Detailed steps:
+      1. Do all the steps you did for the battledore
+      2. Scale down the front part on the x axis
+      3. Add a subdivision surface modifier
+
+
+  
+
+Final Pallet
+
+
+Case study 35 : Parcioffi
+
+
+  
+
+Original Parciofi
+
+
+Methods used:
+      * Thorough texture construction
+      * Bending method
+      * Shape modification with modifiers techniques method
+      * Sculpting method
+
+
+Detailed steps:
+
+
+      1. Do all the steps you did for the Jacks
+      2. Add a cube scale and prolong it accordingly to fit over the slim part of the jack
+      3. Put it on the slim part
+      4. Rotate it slightly on the Y axis
+      5. Use smooth tool from the sculpting to make it look like it used
+      6. Copy and paste it for the other blade of the jack
+      7. Add texture
+  
+
+Final Parciofi
+
+
+
+
+
+
+
+
+
+
+Case study 36 : straight shears
+  
+
+Original straight shears
+
+
+Methods used:
+      * Normal through displacement node
+      * Hole method
+
+
+Detailed steps
+
+
+      1. Add a plane for the blade
+      2. Extrude it on the Z axis to give thickness
+      3. Grab one top end vertice and grab it close to the middle and down to make the curve on the top of the blade
+      4. Add a loop cut close to the end of the other side
+      5. Extrude that face on the right
+      6. Then again add a loop cut on that part and extrude it down
+  
+
+Blade
+
+
+      7. Add a cylinder
+      8. Rotate it a little to look like the original photo
+      9. Stick it to the blade
+      10. Add another cylinder
+      11. Another one and pass it through the previous to make a hole using a boolean modifier
+      12. Stick it to the previous cylinder
+      13.  Copy and paste all these parts and rotate what you pasted 180 degrees at the X axis
+      14. Move accordingly if needed
+      15. Add one last cylinder and put it in the middle of the bottom part of the blade
+  
+
+Final straight shears
+
+
+Case study 37 : Block
+  
+
+Original Block
+
+
+Methods used:
+      * Normal through displacement node
+      * Hole method
+      * Handle method
+
+
+Detailed steps:
+      1. Add cylinder
+      2. Add a uv sphere and add it into the cylinder
+      3. Use a boolean modifier on the cylinder with the sphere as object to make a hole
+      4. Add a cube and stick it to the cylinder
+      5. Add another cylinder and use it to make a hole to the cube and the cylinder you just made
+  
+
+Front part
+
+
+      6. Add another cube and stick it to the cylinder
+      7. Add a cylinder with six vertices and stick it to the cylinder
+      8. Add texture
+  
+
+Final Block
+
+
+Case study 38 : Gabarit
+  
+
+Original Gabarit
+
+
+
+
+
+
+Methods used:
+      * Normal through displacement node
+      * Hole method
+
+
+Detailed steps:
+      1. Add a plain
+      2. Extrude it on the Z axis to give thickness
+      3. Add a cube scale it down on the Y axis 
+      4. Put it on the plane and use it as an object for a boolean modifier on the plane to make a hole
+      5. Add a cone and make a hole again
+      6. Add a torus, cut it in half and do this to both sides as it looks on the picture
+  
+
+Forming the shape
+
+
+      7. Add another torus, uv sphere, torus and cube and do the same procedure until you have the same look as the original photo
+      8. Add textures
+   
+Final Gabarit
+
+
+
+
+Case study 39 : Compass
+  
+
+Original Compass
+
+
+Methods used:
+      * Normal through displacement node
+      * Hole method
+      * Bending Method
+
+
+Detailed steps:
+
+
+      1. Add a plane
+      2. Add a cylinder and use a boolean modifier to make  the plane in the shape of the cylinder
+      3.  With the shame cylinder make a hole in the shape using the hole method
+      4. Make a hole on one side of the cycle you have now using a cylinder
+      5. Extrude the two edges you made to make them sharp
+      6. Make hole on the other side using a cylinder
+      7. Extrude and bend the two new edges you made
+      8. Put one over the other
+      9. Add a cylinder and put it on the top to act as a screw
+      10. Add texture
+  
+
+Final Compass
+
+
+Case study 40 : Puffer
+  
+
+Original Puffer
+
+
+Methods used:
+      * Normal through displacement node
+      * Hole method
+      * Bending Method
+
+
+Detailed steps:
+      1. Add a cylinder
+      2. Bevel one end 
+      3. Add a loop cut close to the end and scale it up
+      4. Add another loop cut close to the previous and separate all that part
+      5. Bend a part close to the end of the other side
+  
+
+Pipe part
+
+
+      6. Make a hole on the other end using the hole method with a cylinder
+      7. Add a cone
+      8. Make a hole on the top using the hole method and a cylinder
+      9. Stick the cone to the bended part
+      10. Add texture
+  
+
+Final Puffer
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Case study 41 : Wet newspaper
+  
+
+Original wet newspaper
+
+
+Methods used:
+      * Thorough texture construction
+      * Sculpting method
+      * Bending Method
+
+
+Detailed steps:
+      1. Add a plane
+      2. Add a lot of loop cuts
+  
+
+Subdividing surface
+
+
+      3. Extrude it so it has thickness
+      4. Grab random vertices and move them a little bit so you make the shape has an undefined shape
+  
+
+Deforming the shape
+
+
+      5. Bend it on some sides
+      6. Copy and paste it
+      7. Move again some vertices on random places so they are not the same
+      8. Stick the new plane below the first
+      9. Add texture
+  
+
+Final wet newspaper
+
+
+
+
+Case study 42 : Chair
+  
+
+Original Chair
+
+
+Methods used:
+      * Normal through displacement node
+      * Hole method
+      * Bending Method
+      * Shape modification with modifiers techniques method
+
+
+Detailed steps:
+      1. Add a cube
+      2. Prolong it and grab two vertices one above the other to make the cut in the end
+      3. Bridge the two edges and prolong a part in the end to put the screws
+      4. Add 3 cylinders, one for the screw and two for the nuts
+      5. Add 3 others for the same reason for the other screw
+      6. Copy and paste those two and move them on the left
+      7. Add 3 cubes for the legs of that part
+      8. Add for others that will connect the legs
+      9. Add 4 more cubes to bridge to the other side
+      10. On those two cubes add 2 other cubes that will hold the tools
+  
+
+Parts assembling
+
+
+      11. Add another 3 cubes for the legs of that other side
+      12. Add 2 more next to them but moved a little bit in front as the original shape
+      13. Another bended cube over them
+      14. Copy and paste the screws from the other side and put them on the last cube
+      15. Add a plain and give it that wave shape it has on the picture
+      16. Extrude it to have thickness
+      17. Add a cube on it and bend the sides on the plane to act as a tool holder
+      18. Add two cubes for the wood on the other cubes
+      19. Add texture
+  
+
+Final Chair
+
+
+
+
+
+
+
+
+
+
+Case study 43 : Diamond shears
+  
+
+Original diamond shears
+
+
+Methods used:
+      * Normal through displacement node
+      * UV unwrap method
+      * Nurbs path method
+
+
+Detailed steps:
+      1. Add a plane
+      2. Modify it so it looks like the blade of the shear
+  
+
+Diamond blade
+
+
+      3. Add a cylinder for the straight part of the handle
+      4. And then use a nurbs path to make the curved part of the shear
+      5. Make these two parts one by selecting them and pressing ctrl+j and then uv unwrap it to have a better texture result later on
+      6. Stick together all those parts
+      7. Copy and paste everything
+      8. Rotate it 180 degrees and move it to the other side to form a shear
+      9. Add a cylinder on the beginning of the blades
+      10. Add texture
+  
+
+Final Diamond shears
+
+
+
+
+
+
+
+
+===================== 3D laser scan=============================
+Case study 44 : Brush 3D
+  
+
+3D scanned Image
+
+
+Methods used:
+      * Ground removing
+      * Part adding
+      * Normal through displacement node
+
+
+Detailed steps:
+      1. Import the scanned image
+      2. Remove all the ground around the shape by selecting the vertices with the brush tool preferably and then deleting them
+      3. Add a cube and scale it to the shape of the part under it
+      4. Stick it to the scanned part
+      5. Add texture
+  Final result after modification
+
+
+
+
+
+
+
+
+Case study 45 : Timitiri 3D
+  
+
+3D scanned Timitiri
+
+
+Methods used:
+      * Ground removing
+      * Part adding
+      * Connected parts sculpting
+      * Normal through displacement node
+
+
+Detailed steps:
+
+
+      1. Import the scanned image
+For the long timitiri
+      2. Remove all the ground around the shape 
+      3. Add a cylinder for the handle
+      4. Add another cylinder for the front part
+      5. Modify it to fit the thick front part
+      6. Add texture
+For the short timitiri
+      7. Add a cylinder
+      8. Put it in the shape in a way that it fits the handle
+      9. Add a cylinder with 3 vertices so it is a triangle
+      10. Put it in the front part
+      11. Add a cylinder and stick those two parts
+      12. Sculpt all the connected parts around the timitiri to smooth it
+  
+
+Final Timitiri 1
+
+
+  
+
+Final Timitiri 2
+
+
+Case study 46 : brushes 3D
+  
+
+3D scanned brushes
+
+
+Methods used:
+      * Ground removing
+      * Duplication
+
+
+Detailed steps:
+      1. Import the 3D scanned images
+      2. Remove the ground around the shapes
+      3. Copy and paste all the shapes 
+      4. Stick it under the shapes
+      5. Smooth the part that connects them by sculpting them
+  
+
+Final Brushes after modification
+
+
+
+
+=====================Photogrammetry============================
+
+
+Case study 47 : Block Photogrammetry
+Result:
+  
+
+Photogrammetry result of block
+
+
+Methods used:
+      * Ground removing
+      * Normal through displacement node
+
+
+Detailed steps:
+      1. Remove the ground
+      2. Add a uv sphere as bottom
+      3. Add texture
+  
+
+Final Block after modification
+
+
+Case study 48 : Puffer Photogrammetry
+Result:
+  
+
+Photogrammetry result of Puffer
+
+
+Methods used:
+      * Ground removing
+      * Normal through displacement node
+      * Hole method
+
+
+Detailed steps: 
+      1. Remove the ground
+      2. Add a cone and put it on the front part
+      3. Open a hole on top of the cone
+      4. Add a cylinder and connect the two parts
+      5. Add texture
+  
+
+Final Puffer 
+
+
+
+
+Case study 49 : Blowpipe Photogrammetry
+Methods used:
+      * Ground removing
+      * Normal through displacement node
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Result:
+  
+
+Photogrammetry result of Blowpipe
+Detailed steps:
+
+      1. Remove ground
+      2. Add 2 cylinders, one for each blowpipe
+      3. Put them in the blowpipes
+      4. Use texture paint to paint the rest of the shape
+      5. Smooth all the edges that overflow from the shape
+  
+
+Final Blowpipe
+
+
+
+
+Case study 50 : Compass Photogrammetry
+  
+
+Photogrammetry result of Compass
+Methods used:
+      * Ground removing
+      * Sculpting method
+      * Normal through displacement node
+
+
+Detailed steps:
+      1. Remove the ground
+      2. Smooth if there are any vertices overflowing the shape
+  
+
+Final Compass
+
+
+
+
+Case study 51 : Gabarit Photogrammetry
+  
+
+Photogrammetry result of Gabarit
+
+
+Methods used:
+      * Ground removing
+      * Normal through displacement node
+
+
+Detailed steps
+      1. Remove the ground
+      2. Remove the interior of the shape the way you removed the ground
+      3. Add texture
+
+
+  
+
+Final Gabarit
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Conclusion and future work
+
+
+This thesis is a detailed step by step research on 3D modeling. It discusses a lot of methods and uses them to construct several 3D models of tools used in heritage crafts.It’s a way to preserve all those crafts but in a modern, elegant and tangible way. People can benefit from this both as get to know 3D arts but also for the general knowledge. The goal is to study every method and be ready to find the best in it’s problem that a 3D artist can face. In the future 3D community has to develop all those methods and if possible find new.
