@@ -1,17 +1,21 @@
-#nav_img{
-    width: 60%;
+#nav_img {
+  width: 60%;
 }
 
 hr.style2 {
-	border-top: 3px double #8c8b8b;
+  border-top: 3px double #8c8b8b;
 }
 
-.axis_images{
-    width: 60%;
+.axis_images {
+  width: 60%;
 }
 
 video {
-    width: 100%;
-    height: auto;
-  }
+  width: 100%;
+  height: auto;
+}
 
+h3 {
+  font-weight: 400 !important;
+  font-size: 2vw !important;
+}

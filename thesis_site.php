@@ -66,4 +66,3 @@ $arr = array(
 
 /* encode the array as json. this will output [{"first_name":"Darian","last_name":"Brown","age":"28","email":"darianbr@example.com"},{"first_name":"John","last_name":"Doe","age":"47","email":"john_doe@example.com"}] */
 echo json_encode($case);
-?>
