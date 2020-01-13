@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+
+
+    <!--javascript-->
+    <script src="thesis_site.js"></script>
+    <!--/javascript-->
+
+    <!--jquery-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <!--/jquery-->
+
+    <!--bootstrap-->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js" integrity="sha384-6khuMg9gaYr5AxOqhkVIODVIvm9ynTT5J4V1cfthmT+emCG6yVmEZsRHdxlotUnm" crossorigin="anonymous"></script>
+    <!--/bootstrap-->
+
+    <!--css-->
+    <link rel="stylesheet" type="text/css" href="thesis_site.css">
+    <!--/css-->
+
+    <title>Thesis</title>
+</head>
+
+<body onload="receive_and_display()">
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="col-md-2 col-3 ">
+            <a class="navbar-brand" href="#"> <img onclick="show_tools()" src="3dimg.png" id="nav_img" class="img-fluid"> </a>
+        </div>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                <li class="nav-item active">
+                    <a class="nav-link" id="home_button" onclick="show_tools()" href="#">Home </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="about_button" onclick="show_about()" href="#">About</a>
+                </li>
+
+            </ul>
+
+        </div>
+    </nav>
+
+
+
+    <br>
+    <div class="container_fluid" id="photo_video">
+
+        <!--
+    <div class="col-4">
+      <h3 style="font-size:3vw;">Case study 1</h3>
+
+      <figure class="figure">
+        <img src="tattoo.png" class="img-fluid figure-img axis_images">
+        <figcaption class="figure-caption"> X axis</figcaption>
+      </figure>
+
+      <figure class="figure">
+        <img src="comp.jpg" class="img-fluid figure-img axis_images">
+        <figcaption class="figure-caption"> Y axis</figcaption>
+      </figure>
+
+      <figure class="figure">
+        <img src="comp.jpg" class="img-fluid figure-img axis_images">
+        <figcaption class="figure-caption"> Z axis</figcaption>
+      </figure>
+
+      <video width="400" controls>
+        <source src="0001-0120.mp4" type="video/mp4">
+      </video>
+
+
+    </div>
+    <br>
+    <hr class="style2">
+    <br>-->
+    </div>
+
+    <div class="container_fluid" id="about_tab">
+        <h3>Nikolaos Kokolantonakis</h3>
+        <h5>University of Crete</h5>
+        <h5>Computer science department</h5>
+        <h5>Thesis Title: Requirements and protocol of the 3D documentation of the Heritage Crafts tools</h5>
+    </div>
+
+</body>
+
+</html>
+
+<!--
+<div class="col-8">
+  <h3 style="font-size:3vw;">' +
+          cases[case_number] +
+          '</h3>
+
+  <figure class="figure">
+    <img src="photos/case study  ' + case_number + ' X axis.png" class="img-fluid figure-img axis_images">
+    <figcaption class="figure-caption"> X axis</figcaption>
+  </figure>
+
+  <figure class="figure">
+    <img src="photos/case study  ' + case_number + ' Y axis.png" class="img-fluid figure-img axis_images">
+    <figcaption class="figure-caption"> Y axis</figcaption>\
+  </figure>
+
+  <figure class="figure">
+    <img src="photos/case study  ' + case_number + ' Z axis.png" class="img-fluid figure-img axis_images">
+    <figcaption class="figure-caption"> Z axis</figcaption>
+  </figure>
+
+  <video controls>
+    <source src="videos/' + case_number + '.mp4" type="video/mp4">
+  </video>
+
+
+</div>-->

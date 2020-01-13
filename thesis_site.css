@@ -1,21 +1,37 @@
 #nav_img {
-  width: 60%;
+    width: 60%;
 }
 
 hr.style2 {
-  border-top: 3px double #8c8b8b;
+    border-top: 3px double #8c8b8b;
 }
 
-.axis_images {
-  width: 60%;
+.axis_images {}
+
+.vido {
+    height: auto;
+    padding-left: 0%;
+    outline: none;
 }
 
-video {
-  width: 100%;
-  height: auto;
+.row {
+    margin-right: -6px;
 }
 
-h3 {
-  font-weight: 400 !important;
-  font-size: 2vw !important;
+a {
+    display: inline-block;
+}
+
+#about_tab {
+    display: none;
+}
+
+#about_tab {
+    padding-left: 1%;
+    font-size: 2vw !important;
+    font-family: "Times New Roman", Times, serif;
+}
+
+#home_button {
+    font-weight: 400;
 }
